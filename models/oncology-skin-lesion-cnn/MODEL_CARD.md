@@ -25,7 +25,7 @@ A 7-class dermatoscopic skin lesion classifier, fine-tuned on HAM10000, that
 reports the clinically-actionable metric — **malignant-class sensitivity** —
 that overall accuracy alone hides.
 
-Source code: [motazalqaoud/oncology-diagnosis-using-cnn](https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN)
+Source code: [motazalqaoud/Oncology-diagnosis-using-CNN](https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN)
 
 ## Model description
 
