@@ -3,11 +3,11 @@
 Requires the source repo cloned alongside this script (for the exact model
 definition in src/classification/model.py):
 
-    git clone https://github.com/motazalqaoud/oncology-diagnosis-using-cnn
+    git clone https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN
     pip install huggingface_hub torch torchvision
 
 Usage:
-    python load_from_hub.py --source-repo ./oncology-diagnosis-using-cnn
+    python load_from_hub.py --source-repo ./Oncology-diagnosis-using-CNN
 """
 
 from __future__ import annotations
@@ -20,8 +20,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--source-repo",
-        default="./oncology-diagnosis-using-cnn",
-        help="Path to a local clone of motazalqaoud/oncology-diagnosis-using-cnn (for src/classification/model.py)",
+        default="./Oncology-diagnosis-using-CNN",
+        help="Path to a local clone of motazalqaoud/Oncology-diagnosis-using-CNN (for src/classification/model.py)",
     )
     parser.add_argument(
         "--repo-id",
@@ -40,7 +40,7 @@ def main() -> None:
     except ImportError as exc:
         raise SystemExit(
             f"Could not import src.classification.model from {args.source_repo!r}. "
-            f"Clone https://github.com/motazalqaoud/oncology-diagnosis-using-cnn "
+            f"Clone https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN "
             f"and pass --source-repo pointing at it."
         ) from exc
 

@@ -90,11 +90,18 @@ misses 36% of malignant cases is not yet usable as a screening aid without
 further improvement (larger backbone, heavier augmentation, ensemble, or a
 higher-recall operating threshold).
 
+## Download
+
+The checkpoint (`best_model.pth`, 16.8 MB) is published in two places:
+
+- **Hugging Face Hub (primary):** [`motazalqaoud/oncology-skin-lesion-weights`](https://huggingface.co/motazalqaoud/oncology-skin-lesion-weights)
+- **GitHub Release mirror:** the `v1.0.0` release of [Oncology-diagnosis-using-CNN](https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN/releases/tag/v1.0.0)
+
 ## How to use
 
 ```bash
 pip install huggingface_hub torch torchvision
-git clone https://github.com/motazalqaoud/oncology-diagnosis-using-cnn
+git clone https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN
 ```
 
 ```python

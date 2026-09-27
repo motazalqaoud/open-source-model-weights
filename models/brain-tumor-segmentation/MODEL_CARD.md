@@ -89,6 +89,17 @@ are literature ranges from heavily-tuned, ensembled pipelines, not a claim
 about what this single-model, single-GPU checkpoint should be expected to hit
 on a different dataset or split.
 
+## Download
+
+The checkpoint (`best_model.pth`, 90.2 MB) is published in two places:
+
+- **Hugging Face Hub (primary):** [`motazalqaoud/brain-tumor-segmentation-weights`](https://huggingface.co/motazalqaoud/brain-tumor-segmentation-weights)
+- **GitHub Release mirror:** the `v2.1.0` release of [Brain-Tumor-Segmentation](https://github.com/motazalqaoud/Brain-Tumor-Segmentation/releases/tag/v2.1.0)
+
+> Note: the older `v1.0.0` and `v2.0.0` release assets in that repo come from
+> earlier, different pipelines (an 8-class WHO tumor-type model, and an earlier
+> segmentation run) and do **not** match the metrics on this card.
+
 ## How to use
 
 ```bash

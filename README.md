@@ -23,7 +23,27 @@ runnable script to fetch and load it — not a duplicate copy of the binary.
 | Model | Task | Key metric | Source repo | Hugging Face |
 |---|---|---|---|---|
 | [Brain Tumor Segmentation](models/brain-tumor-segmentation/MODEL_CARD.md) | 3D multi-region MRI segmentation | Mean Dice 0.8069 (TC/WT/ET) | [Brain-Tumor-Segmentation](https://github.com/motazalqaoud/Brain-Tumor-Segmentation) | `motazalqaoud/brain-tumor-segmentation-weights` |
-| [Oncology Skin Lesion Classifier](models/oncology-skin-lesion-cnn/MODEL_CARD.md) | 7-class dermatoscopic classification | 64.4% malignant sensitivity | [oncology-diagnosis-using-cnn](https://github.com/motazalqaoud/oncology-diagnosis-using-cnn) | `motazalqaoud/oncology-skin-lesion-weights` |
+| [Oncology Skin Lesion Classifier](models/oncology-skin-lesion-cnn/MODEL_CARD.md) | 7-class dermatoscopic classification | 64.4% malignant sensitivity | [Oncology-diagnosis-using-CNN](https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN) | `motazalqaoud/oncology-skin-lesion-weights` |
+
+## Where to download the weights
+
+Each checkpoint is published in two places. Hugging Face Hub is the primary
+source (versioned, resumable, and what `load_from_hub.py` uses); the matching
+GitHub Release asset is a mirror for anyone who would rather pull the file
+straight from the source repository.
+
+| Model | Hugging Face | GitHub Release asset |
+|---|---|---|
+| Brain Tumor Segmentation (90.2 MB) | [brain-tumor-segmentation-weights](https://huggingface.co/motazalqaoud/brain-tumor-segmentation-weights) | [`v2.1.0`](https://github.com/motazalqaoud/Brain-Tumor-Segmentation/releases/tag/v2.1.0) |
+| Oncology Skin Lesion (16.8 MB) | [oncology-skin-lesion-weights](https://huggingface.co/motazalqaoud/oncology-skin-lesion-weights) | [`v1.0.0`](https://github.com/motazalqaoud/Oncology-diagnosis-using-CNN/releases/tag/v1.0.0) |
+
+Both files are named `best_model.pth`.
+
+**A note on older Brain-Tumor-Segmentation release assets:** the `v1.0.0` and
+`v2.0.0` releases of that repo carry assets from *earlier, different* pipelines
+(an 8-class WHO tumor-type model and an earlier segmentation run). They do not
+correspond to the Dice 0.8069 3D Attention U-Net documented here -- use the
+`v2.1.0` asset or the Hugging Face copy for that.
 
 Each model card is a complete, standalone Hugging Face-style model card:
 architecture, training data and procedure, full evaluation numbers (not just
