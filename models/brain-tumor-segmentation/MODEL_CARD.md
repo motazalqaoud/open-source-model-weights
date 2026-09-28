@@ -118,8 +118,12 @@ checkpoint_path = hf_hub_download(
     repo_id="motazalqaoud/brain-tumor-segmentation-weights",
     filename="best_model.pth",
 )
+ckpt = torch.load(checkpoint_path, map_location="cpu")
+# the checkpoint stores weights under "model_state_dict", alongside epoch/val_loss
+state_dict = ckpt.get("model_state_dict", ckpt)
+
 model = build_model()
-model.load_state_dict(torch.load(checkpoint_path, map_location="cpu"))
+model.load_state_dict(state_dict)
 model.eval()
 ```
 

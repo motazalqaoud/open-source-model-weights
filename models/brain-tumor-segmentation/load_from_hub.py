@@ -16,6 +16,18 @@ import argparse
 import sys
 
 
+def _unwrap(obj):
+    """Checkpoints saved mid-training wrap the weights under a key such as
+    'model_state_dict', alongside bookkeeping like epoch and val_loss. Accept
+    both that shape and a bare state dict."""
+    if isinstance(obj, dict):
+        for key in ("model_state_dict", "state_dict", "model", "net"):
+            inner = obj.get(key)
+            if isinstance(inner, dict) and inner:
+                return inner
+    return obj
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -48,7 +60,7 @@ def main() -> None:
     print(f"Downloaded checkpoint to {checkpoint_path}")
 
     model = build_model()
-    state_dict = torch.load(checkpoint_path, map_location="cpu")
+    state_dict = _unwrap(torch.load(checkpoint_path, map_location="cpu"))
     model.load_state_dict(state_dict)
     model.eval()
 

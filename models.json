@@ -1,0 +1,79 @@
+{
+  "$comment": "Machine-readable index of published checkpoints. Consumed by download.py and verify.py.",
+  "schema_version": 1,
+  "models": [
+    {
+      "id": "brain-tumor-segmentation",
+      "title": "Brain Tumor Segmentation (3D Attention U-Net)",
+      "task": "image-segmentation",
+      "framework": "pytorch",
+      "architecture": "MONAI AttentionUnet, spatial_dims=3, 4 in / 3 out channels",
+      "dataset": "Medical Segmentation Decathlon, Task01_BrainTumour",
+      "checkpoint_filename": "best_model.pth",
+      "checkpoint_size_bytes": 94595000,
+      "checkpoint_size_human": "90.2 MB",
+      "huggingface_repo": "motazalqaoud/brain-tumor-segmentation-weights",
+      "github_source_repo": "motazalqaoud/Brain-Tumor-Segmentation",
+      "github_release_tag": "v2.1.0",
+      "model_class_import": "src.model:build_model",
+      "state_dict_key_prefix_hint": null,
+      "metrics": {
+        "dice_tc": 0.7915,
+        "dice_wt": 0.8712,
+        "dice_et": 0.7582,
+        "dice_mean": 0.8069,
+        "hd95_tc_mm": 14.18,
+        "hd95_wt_mm": 15.8,
+        "hd95_et_mm": 7.53
+      },
+      "headline_metric": "Mean Dice 0.8069 (TC/WT/ET)",
+      "model_card": "models/brain-tumor-segmentation/MODEL_CARD.md",
+      "license": "mit",
+      "checkpoint_wrapper_key": null
+    },
+    {
+      "id": "oncology-skin-lesion-cnn",
+      "title": "Oncology Skin Lesion Classifier (EfficientNet-B0)",
+      "task": "image-classification",
+      "framework": "pytorch",
+      "architecture": "EfficientNet-B0, ImageNet-pretrained, custom classification head",
+      "dataset": "HAM10000",
+      "checkpoint_filename": "best_model.pth",
+      "checkpoint_size_bytes": 17655803,
+      "checkpoint_size_human": "16.8 MB",
+      "huggingface_repo": "motazalqaoud/oncology-skin-lesion-weights",
+      "github_source_repo": "motazalqaoud/Oncology-diagnosis-using-CNN",
+      "github_release_tag": "v1.0.0",
+      "model_class_import": "src.classification.model:build_model",
+      "state_dict_key_prefix_hint": "backbone.features",
+      "classes": [
+        "akiec",
+        "bcc",
+        "bkl",
+        "df",
+        "mel",
+        "nv",
+        "vasc"
+      ],
+      "malignant_classes": [
+        "akiec",
+        "bcc",
+        "mel"
+      ],
+      "metrics": {
+        "accuracy_7class": 0.831,
+        "macro_roc_auc": 0.9647,
+        "malignant_sensitivity": 0.644,
+        "malignant_specificity": 0.941,
+        "binary_roc_auc": 0.92,
+        "false_negatives": 101,
+        "malignant_total": 284
+      },
+      "headline_metric": "64.4% malignant sensitivity (101 of 284 missed)",
+      "model_card": "models/oncology-skin-lesion-cnn/MODEL_CARD.md",
+      "license": "mit",
+      "checkpoint_wrapper_key": "model_state_dict",
+      "trained_epochs_best": 14
+    }
+  ]
+}

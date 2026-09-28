@@ -53,6 +53,9 @@ a headline accuracy), intended use, and limitations.
 
 ```
 open-source-model-weights/
+├── models.json                 Machine-readable index of every published checkpoint
+├── download.py                 Fetch a checkpoint by id (Hugging Face or GitHub release)
+├── verify.py                   Check a downloaded file is intact and the right architecture
 ├── models/
 │   ├── brain-tumor-segmentation/
 │   │   ├── MODEL_CARD.md      Architecture, training data, Dice/HD95 results, limitations
@@ -65,24 +68,60 @@ open-source-model-weights/
 
 ## Quickstart
 
+List what's published, fetch one, and confirm it's intact:
+
 ```bash
-pip install huggingface_hub torch
+python download.py --list
+python download.py oncology-skin-lesion-cnn
+python verify.py oncology-skin-lesion-cnn --checkpoint ./weights/best_model.pth
 ```
+
+`verify.py` on a real checkpoint prints:
+
+```
+  size: 16.8 MB  OK
+  format: PyTorch archive, 368 entries  OK
+  architecture: 362 tensors, 4,379,348 parameters
+                training metadata: epoch=14, val_acc=0.8000, val_loss=0.6155
+                358/362 keys match the 'backbone.features.*' fingerprint  OK
+
+PASS -- checkpoint looks intact and matches this model.
+```
+
+`download.py --source github` pulls from the GitHub release instead of Hugging
+Face using only the standard library -- useful where `huggingface_hub` can't be
+installed or the Hub isn't reachable.
+
+### Loading it in code
 
 ```python
 from huggingface_hub import hf_hub_download
 import torch
 
 checkpoint_path = hf_hub_download(
-    repo_id="motazalqaoud/brain-tumor-segmentation-weights",  # or oncology-skin-lesion-weights
+    repo_id="motazalqaoud/oncology-skin-lesion-weights",
     filename="best_model.pth",
 )
-state_dict = torch.load(checkpoint_path, map_location="cpu")
+ckpt = torch.load(checkpoint_path, map_location="cpu")
+
+# NOTE: these checkpoints were saved mid-training, so the weights sit under
+# "model_state_dict" alongside epoch/val_loss -- not at the top level.
+state_dict = ckpt.get("model_state_dict", ckpt)
 ```
 
-To actually run inference you also need the model class definition from the
-corresponding source repo — see each model card's "How to use" section, or
-run that model's `load_from_hub.py` directly.
+To actually run inference you also need the model class from the corresponding
+source repo -- see each model card's "How to use" section, or run that model's
+`load_from_hub.py`, which handles the unwrapping for you.
+
+## Files
+
+| Path | What it does |
+|---|---|
+| `models.json` | Machine-readable manifest: sizes, metrics, HF/GitHub locations, architecture fingerprints |
+| `download.py` | Fetch any published checkpoint by id, from Hugging Face or the GitHub release mirror |
+| `verify.py` | Confirm a downloaded file is intact and is the architecture it claims to be |
+| `models/*/MODEL_CARD.md` | Full model card per checkpoint |
+| `models/*/load_from_hub.py` | Download and load into the real model class |
 
 ## Limitations and disclaimer
 
