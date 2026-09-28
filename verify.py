@@ -113,7 +113,8 @@ def check_architecture(path: pathlib.Path, model: dict) -> bool:
         print(f"                expected keys starting with '{hint}' -- found none. Wrong model?")
         print(f"                first keys present: {sample}")
         return False
-    print(f"                {matched}/{len(keys)} keys match the '{hint}.*' fingerprint  OK")
+    shown = hint if hint.endswith(".") else hint + "."
+    print(f"                {matched}/{len(keys)} keys match the '{shown}*' fingerprint  OK")
     return True
 
 

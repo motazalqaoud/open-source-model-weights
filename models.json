@@ -10,13 +10,13 @@
       "architecture": "MONAI AttentionUnet, spatial_dims=3, 4 in / 3 out channels",
       "dataset": "Medical Segmentation Decathlon, Task01_BrainTumour",
       "checkpoint_filename": "best_model.pth",
-      "checkpoint_size_bytes": 94595000,
+      "checkpoint_size_bytes": 94617685,
       "checkpoint_size_human": "90.2 MB",
       "huggingface_repo": "motazalqaoud/brain-tumor-segmentation-weights",
       "github_source_repo": "motazalqaoud/Brain-Tumor-Segmentation",
       "github_release_tag": "v2.1.0",
       "model_class_import": "src.model:build_model",
-      "state_dict_key_prefix_hint": null,
+      "state_dict_key_prefix_hint": "model.",
       "metrics": {
         "dice_tc": 0.7915,
         "dice_wt": 0.8712,
@@ -29,7 +29,16 @@
       "headline_metric": "Mean Dice 0.8069 (TC/WT/ET)",
       "model_card": "models/brain-tumor-segmentation/MODEL_CARD.md",
       "license": "mit",
-      "checkpoint_wrapper_key": null
+      "checkpoint_wrapper_key": "model_state_dict",
+      "parameters": 23634533,
+      "tensors": 196,
+      "trained_epochs": 100,
+      "validation_metrics": {
+        "val_dice_mean": 0.8031,
+        "val_dice_tc": 0.7868,
+        "val_dice_wt": 0.864,
+        "val_dice_et": 0.7586
+      }
     },
     {
       "id": "oncology-skin-lesion-cnn",
@@ -73,7 +82,13 @@
       "model_card": "models/oncology-skin-lesion-cnn/MODEL_CARD.md",
       "license": "mit",
       "checkpoint_wrapper_key": "model_state_dict",
-      "trained_epochs_best": 14
+      "trained_epochs_best": 14,
+      "parameters": 4379348,
+      "tensors": 362,
+      "validation_metrics": {
+        "val_acc": 0.8,
+        "val_loss": 0.6155
+      }
     }
   ]
 }
