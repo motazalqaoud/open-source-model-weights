@@ -30,7 +30,6 @@
       "model_card": "models/brain-tumor-segmentation/MODEL_CARD.md",
       "license": "mit",
       "checkpoint_wrapper_key": "model_state_dict",
-      "parameters": 23634533,
       "tensors": 196,
       "trained_epochs": 100,
       "validation_metrics": {
@@ -38,7 +37,8 @@
         "val_dice_tc": 0.7868,
         "val_dice_wt": 0.864,
         "val_dice_et": 0.7586
-      }
+      },
+      "state_dict_elements": 23634533
     },
     {
       "id": "oncology-skin-lesion-cnn",
@@ -83,12 +83,12 @@
       "license": "mit",
       "checkpoint_wrapper_key": "model_state_dict",
       "trained_epochs_best": 14,
-      "parameters": 4379348,
       "tensors": 362,
       "validation_metrics": {
         "val_acc": 0.8,
         "val_loss": 0.6155
-      }
+      },
+      "state_dict_elements": 4379348
     }
   ]
 }
